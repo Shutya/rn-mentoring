@@ -48,13 +48,16 @@ const data = [
 ]
 
 class ProductsList extends Component {
-  static navigationOptions = { header: null };
+  static navigationOptions = {
+    title: 'Products',
+    headerLeft: null,
+    headerTitleStyle: styles.headerTitleStyle
+  };
 
   render () {
     return (
       <View style={styles.container}>
         <ScrollView>
-          <Text style={styles.header}>Products</Text>
           <View>
             {data.map((item, index) => (
               <View key={index} style={styles.product}>

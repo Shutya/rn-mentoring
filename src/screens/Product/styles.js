@@ -4,12 +4,17 @@ import { header, simpleText } from 'src/style/commonStyles';
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
-  headerContainer: {
+  headerWrapper: {
+    padding: 30,
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 10
+  },
+  headerTitleStyle: {
+    textAlign: 'center',
+    width: '100%',
+    marginLeft: 0
   },
   headerText: {
     ...header,

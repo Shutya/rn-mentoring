@@ -7,6 +7,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor
   },
+  headerTitleStyle: {
+    textAlign: 'center',
+    width: '100%',
+    marginLeft: 0
+  },
+  headerStyle: {
+    paddingHorizontal: 30
+  },
   header: {
     ...header,
     ...borderBottom,

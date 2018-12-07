@@ -4,13 +4,22 @@ import CustomButton from 'src/components/CustomButton';
 import styles from './styles';
 
 class Login extends Component {
-  state = { login: '', password: '' };
+  state = { username: '', password: '' };
 
   static navigationOptions = { header: null };
 
   onSubmit = () => {
-    const {login, password} = this.state;
-    !!login || !!password ? this.props.navigation.navigate('ProductsList') : alert('You shoul enter login and password');
+    const {username, password} = this.state;
+    (!username || !password)
+      ? alert('You should enter username and password')
+      : fetch('http://ecsc00a02fb3.epam.com/index.php/rest/V1/integration/customer/token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({username, password})
+      })
+        .then(data => data.status === 200 ? data.json() : data.json().then(err => Promise.reject(err)))
+        .then(data => typeof data === 'string' ? this.props.navigation.navigate('ProductsList') : Promise.reject())
+        .catch(data => alert((data && data.message) || 'Something went wrong'));
   }
 
   render() {
@@ -27,8 +36,8 @@ class Login extends Component {
             <TextInput
               placeholder='Login'
               style={styles.textInput}
-              onChangeText={login => this.setState({ login })}
-              value={this.state.login}
+              onChangeText={username => this.setState({ username })}
+              value={this.state.username}
             />
             <TextInput
               placeholder='Password'
