@@ -16,3 +16,9 @@ export const borderBottom = {
   borderBottomWidth: 1,
   borderBottomColor: borderColor
 }
+
+export const headerTitleStyle = {
+  textAlign: 'center',
+  width: '100%',
+  marginLeft: 0
+}
