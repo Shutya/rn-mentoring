@@ -7,8 +7,6 @@ import {authenticate} from 'src/api/auth';
 class Login extends Component {
   state = { username: '', password: '' };
 
-  static navigationOptions = { header: null };
-
   onChangeUsername = username => this.setState({ username  })
 
   onChangePassword = password => this.setState({ password })

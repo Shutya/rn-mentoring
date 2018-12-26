@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { backgroundColor, borderColor } from 'src/style/variables';
 import { header, simpleText, borderBottom } from 'src/style/commonStyles';
 
 const styles = StyleSheet.create({
@@ -33,6 +32,9 @@ const styles = StyleSheet.create({
   text: {
     ...simpleText,
     marginLeft: 15
+  },
+  listLoader: {
+    paddingVertical: 20
   }
 });
 

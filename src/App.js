@@ -1,26 +1,7 @@
 import React, { Component } from 'react';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { NetInfo } from 'react-native';
 import NetworkNotification from 'src/components/NetworkNotification';
-
-import Login from 'src/screens/Login';
-import ProductsList from 'src/screens/ProductsList';
-import Product from 'src/screens/Product';
-import Map from 'src/screens/Map';
-
-const RootStack = createStackNavigator(
-  {
-    Login,
-    ProductsList,
-    Product,
-    Map
-  },
-  {
-    initialRouteName: 'Login',
-  }
-);
-
-const AppContainer = createAppContainer(RootStack);
+import AppContainer from './AppContainer';
 
 export default class App extends Component {
   state = {isModalVisible: false}

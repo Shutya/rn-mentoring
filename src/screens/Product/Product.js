@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Alert, BackHandler } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { Text, View, ScrollView } from 'react-native';
 import CustomButton from 'src/components/CustomButton';
 import styles from './styles';
 
 class Product extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    headerLeft: null,
-    header: () => (<View style={styles.headerWrapper}>
-      <Icon size={50} name={'map'} />
-      <Text style={styles.headerText}>{navigation.getParam('name')}</Text>
-    </View>)
-  });
-
   render () {
     const { navigation } = this.props;
     const textObj = navigation.getParam('custom_attributes').find(item => item.attribute_code === 'description');
@@ -34,7 +25,7 @@ class Product extends Component {
               <CustomButton
                 style={styles.button}
                 mod='secondary'
-                onPress={() => this.props.navigation.navigate('Map', {name: navigation.getParam('name')})}
+                onPress={() => this.props.navigation.navigate('MapScreen', {name: navigation.getParam('name')})}
               >
                 Map
               </CustomButton>

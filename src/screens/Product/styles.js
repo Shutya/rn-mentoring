@@ -1,19 +1,10 @@
 import { StyleSheet } from 'react-native';
-import { header, simpleText } from 'src/style/commonStyles';
+import { simpleText } from 'src/style/commonStyles';
 
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     justifyContent: 'flex-start',
-  },
-  headerWrapper: {
-    padding: 30,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  headerText: {
-    ...header,
-    marginLeft: 30
   },
   textContainer: {
     width: '70%',
