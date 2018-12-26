@@ -1,7 +1,12 @@
 {
   "plugins": [
+    "babel",
     "react",
     "react-native"
+  ],
+  "extends": [
+    "standard",
+    "standard-react"
   ],
   "parser": "babel-eslint",
   "parserOptions": {

@@ -1,16 +1,10 @@
 import { StyleSheet } from 'react-native';
-import { backgroundColor, borderColor } from 'src/style/variables';
 import { header, simpleText, borderBottom } from 'src/style/commonStyles';
 
 const styles = StyleSheet.create({
-  container: {
+  loaderContainer: {
     flex: 1,
-    backgroundColor
-  },
-  headerTitleStyle: {
-    textAlign: 'center',
-    width: '100%',
-    marginLeft: 0
+    justifyContent: 'center'
   },
   headerStyle: {
     paddingHorizontal: 30
@@ -38,6 +32,9 @@ const styles = StyleSheet.create({
   text: {
     ...simpleText,
     marginLeft: 15
+  },
+  listLoader: {
+    paddingVertical: 20
   }
 });
 

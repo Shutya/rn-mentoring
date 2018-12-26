@@ -1,25 +1,23 @@
 import React, {Component} from 'react';
-import {Text, View, ScrollView, Image, TextInput} from 'react-native';
+import {Text, View, ScrollView, Image, TextInput, Alert} from 'react-native';
 import CustomButton from 'src/components/CustomButton';
 import styles from './styles';
+import {authenticate} from 'src/api/auth';
 
 class Login extends Component {
   state = { username: '', password: '' };
 
-  static navigationOptions = { header: null };
+  onChangeUsername = username => this.setState({ username  })
+
+  onChangePassword = password => this.setState({ password })
 
   onSubmit = () => {
     const {username, password} = this.state;
     (!username || !password)
-      ? alert('You should enter username and password')
-      : fetch('http://ecsc00a02fb3.epam.com/index.php/rest/V1/integration/customer/token', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({username, password})
-      })
-        .then(data => data.status === 200 ? data.json() : data.json().then(err => Promise.reject(err)))
-        .then(data => typeof data === 'string' ? this.props.navigation.navigate('ProductsList') : Promise.reject())
-        .catch(data => alert((data && data.message) || 'Something went wrong'));
+      ? Alert.alert('You should enter username and password')
+      : authenticate({username, password})
+        .then(data => this.props.navigation.navigate('ProductsList'))
+        .catch(data => Alert.alert((data && data.message) || 'Something went wrong'));
   }
 
   render() {
@@ -36,13 +34,14 @@ class Login extends Component {
             <TextInput
               placeholder='Login'
               style={styles.textInput}
-              onChangeText={username => this.setState({ username })}
+              onChangeText={this.onChangeUsername}
               value={this.state.username}
             />
             <TextInput
               placeholder='Password'
+              textContentType='password'
               style={styles.textInput}
-              onChangeText={password => this.setState({ password })}
+              onChangeText={this.onChangePassword}
               value={this.state.password}
             />
             <CustomButton

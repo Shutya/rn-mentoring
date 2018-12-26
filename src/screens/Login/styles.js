@@ -10,8 +10,7 @@ const styles = StyleSheet.create({
   scrollContainer: {
     alignItems: 'center',
     justifyContent: 'flex-start',
-    paddingTop: 40,
-    paddingBottom: 40
+    paddingVertical: 40
   },
   logo: {
     width: '50%',

@@ -16,3 +16,20 @@ export const borderBottom = {
   borderBottomWidth: 1,
   borderBottomColor: borderColor
 }
+
+export const headerTitleStyle = {
+  textAlign: 'center',
+  width: '100%',
+  marginLeft: 0
+}
+
+export const headerWrapper = {
+  padding: 30,
+  flexDirection: 'row',
+  alignItems: 'center'
+};
+
+export const headerText = {
+  ...header,
+  marginLeft: 30
+};

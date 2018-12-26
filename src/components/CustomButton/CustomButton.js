@@ -8,7 +8,7 @@ const CustomButton = ({
   style = {},
   ...rest
 }) => (
-  <View style={{...styles[`${mod}Wrapper`], ...style }}>
+  <View style={[styles[`${mod}Wrapper`], style]}>
     <TouchableHighlight {...rest}>
       <View style={styles[mod]}>
         <Text style={styles[`${mod}Text`]}>{children}</Text>
