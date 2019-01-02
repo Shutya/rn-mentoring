@@ -4,7 +4,8 @@ import CustomButton from 'src/components/CustomButton';
 import styles from './styles';
 
 class Product extends Component {
-  render () {
+  navigateToList = () => this.props.navigation.navigate('ProductsList');
+ render () {
     const { navigation } = this.props;
     const textObj = navigation.getParam('custom_attributes').find(item => item.attribute_code === 'description');
     return (
@@ -18,16 +19,9 @@ class Product extends Component {
               <CustomButton
                 style={styles.button}
                 mod='secondary'
-                onPress={() => this.props.navigation.navigate('ProductsList')}
+                onPress={this.navigateToList}
               >
                 All products
-              </CustomButton>
-              <CustomButton
-                style={styles.button}
-                mod='secondary'
-                onPress={() => this.props.navigation.navigate('MapScreen', {name: navigation.getParam('name')})}
-              >
-                Map
               </CustomButton>
             </View>
           </ScrollView>

@@ -1,23 +1,39 @@
 import React, {Component} from 'react';
-import {Text, View, ScrollView, Image, TextInput, Alert} from 'react-native';
-import CustomButton from 'src/components/CustomButton';
+import {Text, View, ScrollView, Image, TextInput, LayoutAnimation} from 'react-native';
+import CustomModal from 'src/components/CustomModal';
+import {AnimatedButton} from 'src/components/CustomButton';
 import styles from './styles';
 import {authenticate} from 'src/api/auth';
+import {flow} from 'src/helpers/lodash';
 
 class Login extends Component {
-  state = { username: '', password: '' };
+  state = { username: '', password: '', loading: false };
 
-  onChangeUsername = username => this.setState({ username  })
+  onChangeUsername = username => this.setState({ username });
 
-  onChangePassword = password => this.setState({ password })
+  onChangePassword = password => this.setState({ password });
+
+  onToggleLoading = () => this.setState({ loading: !this.state.loading });
+
+  changeError(error) {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+    this.setState({ error });
+  }
+
+  onResetError = () => {
+    this.changeError(null);
+  }
 
   onSubmit = () => {
     const {username, password} = this.state;
-    (!username || !password)
-      ? Alert.alert('You should enter username and password')
-      : authenticate({username, password})
-        .then(data => this.props.navigation.navigate('ProductsList'))
-        .catch(data => Alert.alert((data && data.message) || 'Something went wrong'));
+    if (!username || !password) {
+      this.changeError('You should enter username and password');
+    } else if (!this.state.loading) {
+      this.onToggleLoading();
+      authenticate({ username, password })
+        .then(flow([() => this.props.navigation.navigate('Drawer'), this.onToggleLoading]))
+        .catch(flow([data => this.changeError((data && data.message) || 'Something went wrong'), this.onToggleLoading]));
+    }
   }
 
   render() {
@@ -44,15 +60,20 @@ class Login extends Component {
               onChangeText={this.onChangePassword}
               value={this.state.password}
             />
-            <CustomButton
+            <AnimatedButton
               style={styles.button}
               mod={'secondary'}
               onPress={this.onSubmit}
+              loading={this.state.loading}
             >
               Login
-            </CustomButton>
+            </AnimatedButton>
           </View>
         </ScrollView>
+        {this.state.error && <CustomModal
+          error={this.state.error}
+          onResetError={this.onResetError}
+        />}
       </View>
     );
   }

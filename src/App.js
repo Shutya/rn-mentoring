@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { NetInfo } from 'react-native';
+import { NetInfo, UIManager } from 'react-native';
 import NetworkNotification from 'src/components/NetworkNotification';
-import AppContainer from './AppContainer';
+import AppContainer from 'src/navigation/AppContainer';
 
 export default class App extends Component {
-  state = {isModalVisible: false}
+  constructor(props) {
+    super(props);
+    this.state = { isModalVisible: false }
+    UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
 
   componentDidMount() {
     NetInfo.isConnected.addEventListener('connectionChange', this.onChangeModalVisible);

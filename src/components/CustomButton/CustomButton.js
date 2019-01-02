@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableHighlight} from 'react-native';
+import {View, Text, TouchableWithoutFeedback} from 'react-native';
 import styles from './styles';
 
 const CustomButton = ({
@@ -9,11 +9,11 @@ const CustomButton = ({
   ...rest
 }) => (
   <View style={[styles[`${mod}Wrapper`], style]}>
-    <TouchableHighlight {...rest}>
+    <TouchableWithoutFeedback {...rest}>
       <View style={styles[mod]}>
         <Text style={styles[`${mod}Text`]}>{children}</Text>
       </View>
-    </TouchableHighlight>
+    </TouchableWithoutFeedback>
   </View>
 );
 
