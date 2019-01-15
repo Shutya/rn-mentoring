@@ -9,7 +9,8 @@ export default class Hamburger extends Component {
     this.topBar = new Animated.Value(0);
     this.bottomBar = new Animated.Value(0);
     this.middleBarOpacity = new Animated.Value(1);
-    this.bottomBarMargin = new Animated.Value(4);
+    this.bottomBarTranslateY = new Animated.Value(4);
+    this.bottomBarTranslateX = new Animated.Value(0);
   }
 
   componentDidUpdate() {
@@ -23,20 +24,29 @@ export default class Hamburger extends Component {
   animateOpen() {
     Animated.parallel([
       Animated.spring(this.containerAnim, {
-        toValue: 1
+        toValue: 1,
+        useNativeDriver: true
       }),
       Animated.spring(this.topBar, {
-        toValue: .9
+        toValue: .9,
+        useNativeDriver: true
       }),
       Animated.spring(this.bottomBar, {
-        toValue: .9
+        toValue: .9,
+        useNativeDriver: true
       }),
-      Animated.spring(this.bottomBarMargin, {
-        toValue: -10
+      Animated.spring(this.bottomBarTranslateY, {
+        toValue: -7,
+        useNativeDriver: true
+      }),
+      Animated.spring(this.bottomBarTranslateX, {
+        toValue: -7,
+        useNativeDriver: true
       }),
       Animated.spring(this.middleBarOpacity, {
         toValue: 0,
-        duration: 30
+        duration: 30,
+        useNativeDriver: true
       })
     ]).start();
   }
@@ -44,20 +54,29 @@ export default class Hamburger extends Component {
   animateClose() {
     Animated.parallel([
       Animated.spring(this.containerAnim, {
-        toValue: 0
+        toValue: 0,
+        useNativeDriver: true
       }),
       Animated.spring(this.topBar, {
-        toValue: 0
+        toValue: 0,
+        useNativeDriver: true
       }),
       Animated.spring(this.bottomBar, {
-        toValue: 0
+        toValue: 0,
+        useNativeDriver: true
       }),
-      Animated.spring(this.bottomBarMargin, {
-        toValue: 4
+      Animated.spring(this.bottomBarTranslateY, {
+        toValue: 4,
+        useNativeDriver: true
+      }),
+      Animated.spring(this.bottomBarTranslateX, {
+        toValue: 0,
+        useNativeDriver: true
       }),
       Animated.spring(this.middleBarOpacity, {
         toValue: 1,
-        duration: 600
+        duration: 600,
+        useNativeDriver: true
       })
     ]).start();
   }
@@ -92,14 +111,18 @@ export default class Hamburger extends Component {
             marginTop: 4}]}
           />
           <Animated.View style={[styles.arrow, {
-            marginTop: this.bottomBarMargin,
             transform: [
-              {rotate: this.bottomBar.interpolate({
-                inputRange: [0, 1],
-                outputRange: [
-                  '0deg', '50deg'
-                ],
-              })}
+              {
+                rotate: this.bottomBar.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [
+                    '0deg', '50deg'
+                  ]})
+              },
+              {
+                translateY: this.bottomBarTranslateY,
+              },
+              { translateX: this.bottomBarTranslateX }
             ]}]}
           />
         </Animated.View>

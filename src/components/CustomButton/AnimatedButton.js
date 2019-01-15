@@ -1,12 +1,13 @@
 import React from 'react';
-import { ActivityIndicator, TouchableWithoutFeedback, Animated } from 'react-native';
+import { ActivityIndicator, TouchableWithoutFeedback, Animated, View, LayoutAnimation } from 'react-native';
 import styles from './styles';
 
 class CustomButton extends React.Component {
   constructor(props) {
     super(props);
-    const { style = {} } = props;
-    this.width = new Animated.Value(style.width || 150);
+    this.state = {
+      width: 150
+    }
     this.borderRadius = new Animated.Value(5);
     this.opacity = new Animated.Value(1);
   }
@@ -18,20 +19,20 @@ class CustomButton extends React.Component {
   }
 
   animate(loading) {
-    const width = loading ? 50 : 150;
     const borderRadius = loading ? 25 : 5;
     const opacity = loading ? 0 : 1;
     Animated.parallel([
-      Animated.spring(this.width, {
-        toValue: width
-      }),
       Animated.spring(this.borderRadius, {
-        toValue: borderRadius
+        toValue: borderRadius,
+        useNativeDriver: true
       }),
       Animated.spring(this.opacity, {
-        toValue: opacity
+        toValue: opacity,
+        useNativeDriver: true
       })
     ]).start();
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+    this.setState({ width: loading ? 50 : 150 });
   }
 
   render() {
@@ -42,8 +43,8 @@ class CustomButton extends React.Component {
       ...rest
     } = this.props;
     return (
-      <Animated.View style={[style, {
-        width: this.width
+      <View style={[style, {
+        width: this.state.width,
       }]}>
         <TouchableWithoutFeedback {...rest}>
           <Animated.View
@@ -65,7 +66,7 @@ class CustomButton extends React.Component {
             }
           </Animated.View>
         </TouchableWithoutFeedback>
-      </Animated.View>
+      </View>
     );
   }
 }
