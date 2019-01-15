@@ -5,7 +5,8 @@ import {header, simpleText} from 'src/style/commonStyles';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor
+    backgroundColor,
+    position: 'relative'
   },
   scrollContainer: {
     alignItems: 'center',
@@ -36,9 +37,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor,
     borderRadius: 3
-  },
-  button: {
-    marginTop: 15
   }
 });
 

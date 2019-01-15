@@ -1,26 +1,23 @@
 import React from 'react';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 import { headerWrapper, headerText, headerTitleStyle } from 'src/style/commonStyles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Text, View } from 'react-native';
 
-import Login from 'src/screens/Login';
 import ProductsList from 'src/screens/ProductsList';
 import Product from 'src/screens/Product';
-import MapScreen from 'src/screens/MapScreen';
 
-const RootStack = createStackNavigator(
+const ProductStack = createStackNavigator(
   {
-    Login: {
-      screen: Login,
-      navigationOptions: { header: null }
-    },
     ProductsList: {
       screen: ProductsList,
       navigationOptions: {
-        title: 'Products',
+        header: () => (
+          <View style={headerWrapper}>
+            <Text style={headerText}>All products</Text>
+          </View>
+        ),
         headerLeft: null,
-        headerTitleStyle
       }
     },
     Product: {
@@ -35,18 +32,10 @@ const RootStack = createStackNavigator(
         )
       })
     },
-    MapScreen: {
-      screen: MapScreen,
-      navigationOptions: ({ navigation }) => ({
-        title: `${navigation.getParam('name')} Map`,
-        headerLeft: null,
-        headerTitleStyle
-      })
-    }
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'ProductsList',
   }
 );
 
-export default createAppContainer(RootStack);
+export default ProductStack;

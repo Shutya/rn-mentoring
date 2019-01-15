@@ -1,0 +1,1 @@
+export const flow = funcArr => data => funcArr.reduce((acc, func) => func(acc), data);

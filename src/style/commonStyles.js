@@ -24,9 +24,10 @@ export const headerTitleStyle = {
 }
 
 export const headerWrapper = {
-  padding: 30,
+  padding: 20,
   flexDirection: 'row',
-  alignItems: 'center'
+  alignItems: 'center',
+  justifyContent: 'center'
 };
 
 export const headerText = {
