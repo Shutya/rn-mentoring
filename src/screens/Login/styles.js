@@ -3,6 +3,11 @@ import {backgroundColor, borderColor } from 'src/style/variables';
 import {header, simpleText} from 'src/style/commonStyles';
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   container: {
     flex: 1,
     backgroundColor,

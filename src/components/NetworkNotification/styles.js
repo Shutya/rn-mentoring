@@ -2,7 +2,8 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   wrapper: {
-    padding: 20
+    padding: 20,
+    alignItems: 'center'
   },
   header: {
     textAlign: 'center',
