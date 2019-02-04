@@ -1,13 +1,20 @@
 import React, {Component} from 'react';
-import {Text, View, ScrollView, Image, TextInput, LayoutAnimation} from 'react-native';
+import {Text, View, ScrollView, Image, TextInput, LayoutAnimation, Vibration} from 'react-native';
 import CustomModal from 'src/components/CustomModal';
 import {AnimatedButton} from 'src/components/CustomButton';
 import styles from './styles';
 import {authenticate} from 'src/api/auth';
 import {flow} from 'src/helpers/lodash';
+import {putIntoStorage, getFromStorage} from 'src/helpers/asyncStorage';
 
 class Login extends Component {
-  state = { username: '', password: '', loading: false };
+  state = { username: '', password: '', loading: false, isStorageChecked: false };
+
+  componentDidMount() {
+    getFromStorage('isLogined')
+      .then((isLogined) => isLogined === 'true' ? this.props.navigation.navigate('Drawer') : Promise.reject())
+      .catch(() => this.setState({isStorageChecked: true}));
+  }
 
   onChangeUsername = username => this.setState({ username });
 
@@ -15,7 +22,10 @@ class Login extends Component {
 
   onToggleLoading = () => this.setState({ loading: !this.state.loading });
 
+  onStoreLogin = () => putIntoStorage('isLogined', 'true');
+
   changeError(error) {
+    error && Vibration.vibrate(500);
     LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
     this.setState({ error });
   }
@@ -31,13 +41,13 @@ class Login extends Component {
     } else if (!this.state.loading) {
       this.onToggleLoading();
       authenticate({ username, password })
-        .then(flow([() => this.props.navigation.navigate('Drawer'), this.onToggleLoading]))
+        .then(flow([() => this.props.navigation.navigate('Drawer'), this.onStoreLogin, this.onToggleLoading]))
         .catch(flow([data => this.changeError((data && data.message) || 'Something went wrong'), this.onToggleLoading]));
     }
   }
 
   render() {
-    return (
+    return (this.state.isStorageChecked &&
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
           <Image
