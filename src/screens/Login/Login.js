@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import {Text, View, ScrollView, Image, TextInput, LayoutAnimation, Vibration} from 'react-native';
 import CustomModal from 'src/components/CustomModal';
 import {AnimatedButton} from 'src/components/CustomButton';
+import Greeting from 'src/components/Greeting';
 import styles from './styles';
 import {authenticate} from 'src/api/auth';
 import {flow} from 'src/helpers/lodash';
 import {putIntoStorage, getFromStorage} from 'src/helpers/asyncStorage';
 
 class Login extends Component {
-  state = { username: '', password: '', loading: false, isStorageChecked: false };
+  state = { username: '', password: '', loading: false, isStorageChecked: false, isGreetingOpened: true };
 
   componentDidMount() {
     getFromStorage('isLogined')
@@ -46,10 +47,15 @@ class Login extends Component {
     }
   }
 
+  onCloseGreeting = () => {
+    this.setState({ isGreetingOpened: false });
+  }
+
   render() {
     return (this.state.isStorageChecked &&
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
+          {this.state.isGreetingOpened && <Greeting onCloseGreeting={this.onCloseGreeting} />}
           <Image
             resizeMode={'contain'}
             style={styles.logo}

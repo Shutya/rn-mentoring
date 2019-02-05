@@ -134,9 +134,17 @@ android {
             }
         }
     }
+    configurations.all {
+        resolutionStrategy {
+            force 'com.airbnb.android:lottie:2.5.5'
+        }
+    }
 }
 
 dependencies {
+    compile project(':react-native-splash-screen')
+    compile project(':lottie-react-native')
+    compile project(':react-native-device-info')
     compile project(':react-native-maps')
     compile project(':react-native-vector-icons')
     compile project(':react-native-gesture-handler')

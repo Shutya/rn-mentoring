@@ -18,6 +18,14 @@ const styles = StyleSheet.create({
   },
   button: {
     width: 160
+  },
+  lottieBlock: {
+    width: '100%',
+    alignItems: 'center'
+  },
+  lottie: {
+    width: 400,
+    height: 200
   }
 });
 
