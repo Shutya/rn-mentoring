@@ -1,5 +1,7 @@
-import { AsyncStorage } from "react-native"
+import { NativeModules } from "react-native"
+
+const { AsyncStorage } = NativeModules;
 
 export const putIntoStorage = (key, value) => AsyncStorage.setItem(key, value);
 
-export const getFromStorage = (key) => AsyncStorage.getItem(key).then(data => data !== null ? data : Promise.reject('No data'));
+export const getFromStorage = (key) => AsyncStorage.getItem(key);
