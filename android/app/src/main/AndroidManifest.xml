@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
       android:name=".MainApplication"
@@ -26,6 +27,10 @@
       <meta-data
         android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyBxV9gq3MH0lj7XCcF9vlk-PUFztQnaiD4"/>
+      <meta-data  android:name="com.dieam.reactnativepushnotification.notification_channel_name"
+                android:value="rn_mentoring"/>
+      <meta-data  android:name="com.dieam.reactnativepushnotification.notification_channel_description"
+                android:value="rn_mentoring push notifications"/>
     </application>
 
 </manifest>

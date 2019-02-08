@@ -12,8 +12,8 @@ class Login extends Component {
   state = { username: '', password: '', loading: false, isStorageChecked: false, isGreetingOpened: true };
 
   componentDidMount() {
-    getFromStorage('isLogined')
-      .then((isLogined) => isLogined === 'true' ? this.props.navigation.navigate('Drawer') : Promise.reject())
+    getFromStorage('token')
+      .then((token) => token ? this.props.navigation.navigate('Drawer') : Promise.reject())
       .catch(() => this.setState({isStorageChecked: true}));
   }
 
@@ -23,7 +23,7 @@ class Login extends Component {
 
   onToggleLoading = () => this.setState({ loading: !this.state.loading });
 
-  onStoreLogin = () => putIntoStorage('isLogined', 'true');
+  onStoreLogin = (token) => putIntoStorage('token', token);
 
   changeError(error) {
     error && Vibration.vibrate(500);
@@ -42,7 +42,7 @@ class Login extends Component {
     } else if (!this.state.loading) {
       this.onToggleLoading();
       authenticate({ username, password })
-        .then(flow([() => this.props.navigation.navigate('Drawer'), this.onStoreLogin, this.onToggleLoading]))
+        .then(flow([this.onStoreLogin, () => this.props.navigation.navigate('Drawer'), this.onToggleLoading]))
         .catch(flow([data => this.changeError((data && data.message) || 'Something went wrong'), this.onToggleLoading]));
     }
   }

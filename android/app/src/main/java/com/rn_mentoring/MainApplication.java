@@ -6,6 +6,7 @@ import com.facebook.react.ReactApplication;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
@@ -30,13 +31,14 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new SplashScreenReactPackage(),
-            new LottiePackage(),
-            new RNDeviceInfo(),
-            new MapsPackage(),
-            new VectorIconsPackage(),
-            new RNGestureHandlerPackage(),
-            new CustomAsyncStorage()
+          new SplashScreenReactPackage(),
+          new LottiePackage(),
+          new RNDeviceInfo(),
+          new ReactNativePushNotificationPackage(),
+          new MapsPackage(),
+          new VectorIconsPackage(),
+          new RNGestureHandlerPackage(),
+          new CustomAsyncStorage()
       );
     }
 

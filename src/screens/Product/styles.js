@@ -14,9 +14,11 @@ const styles = StyleSheet.create({
   buttonsBlock: {
     width: '100%',
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    flexWrap: 'wrap'
   },
   button: {
+    marginBottom: 10,
     width: 160
   },
   lottieBlock: {
