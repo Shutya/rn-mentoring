@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NetInfo, UIManager } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 import NetworkNotification from 'src/components/NetworkNotification';
 import AppContainer from 'src/navigation/AppContainer';
 
@@ -11,6 +12,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
+    SplashScreen.hide();
     NetInfo.isConnected.addEventListener('connectionChange', this.onChangeModalVisible);
   }
 

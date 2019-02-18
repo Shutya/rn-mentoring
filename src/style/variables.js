@@ -16,6 +16,7 @@ export const simpleTextColor = darkGray;
 export const borderColor = lightGray;
 export const primaryButtonColor = blue;
 export const secondaryButtonColor = limeGreen;
+export const notificationBG = limeGreen;
 
 // Fonts
 export const headerFont = 'MuseoSans-700';
