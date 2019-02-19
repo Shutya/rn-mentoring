@@ -6,6 +6,7 @@ import { Text, View } from 'react-native';
 
 import ProductsList from 'src/screens/ProductsList';
 import Product from 'src/screens/Product';
+import Cart from 'src/screens/Cart';
 
 const ProductStack = createStackNavigator(
   {
@@ -32,6 +33,17 @@ const ProductStack = createStackNavigator(
         )
       })
     },
+    Cart: {
+      screen: Cart,
+      navigationOptions: {
+        header: () => (
+          <View style={headerWrapper}>
+            <Text style={headerText}>Cart</Text>
+          </View>
+        ),
+        headerLeft: null
+      }
+    }
   },
   {
     initialRouteName: 'ProductsList',
