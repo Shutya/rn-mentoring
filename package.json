@@ -9,14 +9,15 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bugsnag-react-native": "^2.14.0",
     "lottie-react-native": "^2.5.11",
     "react": "16.6.1",
     "react-native": "0.57.7",
     "react-native-device-info": "^0.26.1",
     "react-native-gesture-handler": "^1.0.10",
     "react-native-maps": "^0.22.1",
-    "react-native-splash-screen": "^3.1.1",
     "react-native-push-notification": "^3.1.2",
+    "react-native-splash-screen": "^3.1.1",
     "react-native-vector-icons": "^6.1.0",
     "react-navigation": "^3.0.4",
     "react-navigation-drawer": "^1.0.5"

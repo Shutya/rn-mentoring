@@ -7,13 +7,21 @@ import styles from './styles';
 import {authenticate} from 'src/api/auth';
 import {flow} from 'src/helpers/lodash';
 import {putIntoStorage, getFromStorage} from 'src/helpers/asyncStorage';
+import { bugsnag } from 'src/helpers/bugsnag';
 
 class Login extends Component {
   state = { username: '', password: '', loading: false, isStorageChecked: false, isGreetingOpened: true };
 
   componentDidMount() {
     getFromStorage('token')
-      .then((token) => token ? this.props.navigation.navigate('Drawer') : Promise.reject())
+      .then((token) => {
+        if (token) {
+          this.props.navigation.navigate('Drawer');
+          getFromStorage('username').then(username => this.onSendUserToBugsnag(username));
+        } else {
+          Promise.reject()
+        }
+      })
       .catch(() => this.setState({isStorageChecked: true}));
   }
 
@@ -23,7 +31,9 @@ class Login extends Component {
 
   onToggleLoading = () => this.setState({ loading: !this.state.loading });
 
-  onStoreLogin = (token) => putIntoStorage('token', token);
+  onStoreLogin = (username) => (token) => putIntoStorage({ token, username });
+
+  onSendUserToBugsnag = username => bugsnag.setUser(username);
 
   changeError(error) {
     error && Vibration.vibrate(500);
@@ -42,7 +52,7 @@ class Login extends Component {
     } else if (!this.state.loading) {
       this.onToggleLoading();
       authenticate({ username, password })
-        .then(flow([this.onStoreLogin, () => this.props.navigation.navigate('Drawer'), this.onToggleLoading]))
+        .then(flow([this.onStoreLogin(username), () => this.onSendUserToBugsnag(username), () => this.props.navigation.navigate('Drawer'), this.onToggleLoading]))
         .catch(flow([data => this.changeError((data && data.message) || 'Something went wrong'), this.onToggleLoading]));
     }
   }
