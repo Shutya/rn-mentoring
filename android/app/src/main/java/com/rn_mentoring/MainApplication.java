@@ -3,6 +3,7 @@ package com.rn_mentoring;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.bugsnag.BugsnagReactNative;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
@@ -31,6 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            BugsnagReactNative.getPackage(),
           new SplashScreenReactPackage(),
           new LottiePackage(),
           new RNDeviceInfo(),
