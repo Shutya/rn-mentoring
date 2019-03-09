@@ -94,6 +94,7 @@
 		5B43240948384B3DA8E6A43B /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC7D70EEE45B47EB8467B3E6 /* libSplashScreen.a */; };
 		315FC37AC7044598A2901AE3 /* libBugsnagReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFF2B5454E6B49BFB3AB900A /* libBugsnagReactNative.a */; };
 		097B36A507F84C5DB387DB43 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF31AAD805F94BB286AA5B9A /* libz.tbd */; };
+		5691219722BF4240A2852B63 /* libRNSecureStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D0CB763BE814099BC4BC5ED /* libRNSecureStorage.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -463,6 +464,8 @@
 		4ED7B07B2D9C4AFC858470EE /* BugsnagReactNative.xcodeproj */ = {isa = PBXFileReference; name = "BugsnagReactNative.xcodeproj"; path = "../node_modules/bugsnag-react-native/cocoa/BugsnagReactNative.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		CFF2B5454E6B49BFB3AB900A /* libBugsnagReactNative.a */ = {isa = PBXFileReference; name = "libBugsnagReactNative.a"; path = "libBugsnagReactNative.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		CF31AAD805F94BB286AA5B9A /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
+		8D11FB9476814B2F8C0955D8 /* RNSecureStorage.xcodeproj */ = {isa = PBXFileReference; name = "RNSecureStorage.xcodeproj"; path = "../node_modules/rn-secure-storage/ios/RNSecureStorage.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		6D0CB763BE814099BC4BC5ED /* libRNSecureStorage.a */ = {isa = PBXFileReference; name = "libRNSecureStorage.a"; path = "libRNSecureStorage.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -498,6 +501,7 @@
 				5B43240948384B3DA8E6A43B /* libSplashScreen.a in Frameworks */,
 				315FC37AC7044598A2901AE3 /* libBugsnagReactNative.a in Frameworks */,
 				097B36A507F84C5DB387DB43 /* libz.tbd in Frameworks */,
+				5691219722BF4240A2852B63 /* libRNSecureStorage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,6 +698,7 @@
 				B03FA5989F4240359EE2900B /* LottieReactNative.xcodeproj */,
 				429A9257E62B4CAAA8A03ECC /* SplashScreen.xcodeproj */,
 				4ED7B07B2D9C4AFC858470EE /* BugsnagReactNative.xcodeproj */,
+				8D11FB9476814B2F8C0955D8 /* RNSecureStorage.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1433,6 +1438,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1443,6 +1449,7 @@
 					"$(SRCROOT)\..\node_modules\lottie-react-native\src\ios\LottieReactNative",
 					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
 					"$(SRCROOT)\..\node_modules\bugsnag-react-native\cocoa/**",
+					"$(SRCROOT)\..\node_modules\rn-secure-storage\ios",
 				);
 			};
 			name = Debug;
@@ -1473,6 +1480,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1483,6 +1491,7 @@
 					"$(SRCROOT)\..\node_modules\lottie-react-native\src\ios\LottieReactNative",
 					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
 					"$(SRCROOT)\..\node_modules\bugsnag-react-native\cocoa/**",
+					"$(SRCROOT)\..\node_modules\rn-secure-storage\ios",
 				);
 			};
 			name = Release;
@@ -1512,6 +1521,7 @@
 					"$(SRCROOT)\..\node_modules\lottie-react-native\src\ios\LottieReactNative",
 					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
 					"$(SRCROOT)\..\node_modules\bugsnag-react-native\cocoa/**",
+					"$(SRCROOT)\..\node_modules\rn-secure-storage\ios",
 				);
 			};
 			name = Debug;
@@ -1540,6 +1550,7 @@
 					"$(SRCROOT)\..\node_modules\lottie-react-native\src\ios\LottieReactNative",
 					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
 					"$(SRCROOT)\..\node_modules\bugsnag-react-native\cocoa/**",
+					"$(SRCROOT)\..\node_modules\rn-secure-storage\ios",
 				);
 			};
 			name = Release;
@@ -1578,6 +1589,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1588,6 +1600,7 @@
 					"$(SRCROOT)\..\node_modules\lottie-react-native\src\ios\LottieReactNative",
 					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
 					"$(SRCROOT)\..\node_modules\bugsnag-react-native\cocoa/**",
+					"$(SRCROOT)\..\node_modules\rn-secure-storage\ios",
 				);
 			};
 			name = Debug;
@@ -1626,6 +1639,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1636,6 +1650,7 @@
 					"$(SRCROOT)\..\node_modules\lottie-react-native\src\ios\LottieReactNative",
 					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
 					"$(SRCROOT)\..\node_modules\bugsnag-react-native\cocoa/**",
+					"$(SRCROOT)\..\node_modules\rn-secure-storage\ios",
 				);
 			};
 			name = Release;
@@ -1673,6 +1688,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1683,6 +1699,7 @@
 					"$(SRCROOT)\..\node_modules\lottie-react-native\src\ios\LottieReactNative",
 					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
 					"$(SRCROOT)\..\node_modules\bugsnag-react-native\cocoa/**",
+					"$(SRCROOT)\..\node_modules\rn-secure-storage\ios",
 				);
 			};
 			name = Debug;
@@ -1720,6 +1737,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1730,6 +1748,7 @@
 					"$(SRCROOT)\..\node_modules\lottie-react-native\src\ios\LottieReactNative",
 					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
 					"$(SRCROOT)\..\node_modules\bugsnag-react-native\cocoa/**",
+					"$(SRCROOT)\..\node_modules\rn-secure-storage\ios",
 				);
 			};
 			name = Release;

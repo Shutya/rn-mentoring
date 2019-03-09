@@ -1,7 +1,5 @@
-import { NativeModules } from "react-native"
+import RNSecureStorage, { ACCESSIBLE } from 'rn-secure-storage';
 
-const { AsyncStorage } = NativeModules;
+export const putIntoStorage = (obj) => Object.keys(obj).forEach(key => RNSecureStorage.set(key, obj[key], { accessible: ACCESSIBLE.WHEN_UNLOCKED }));
 
-export const putIntoStorage = (obj) => Object.keys(obj).forEach(key => AsyncStorage.setItem(key, obj[key]));
-
-export const getFromStorage = (key) => AsyncStorage.getItem(key);
+export const getFromStorage = (key) => RNSecureStorage.get(key);
